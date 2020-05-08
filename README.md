@@ -3,7 +3,7 @@
 ## Main Idea
 
 Droidsaber uses the IIO system to read out a accelerometer and make
-n appropriately giggle-worthy Star Wars-like lightsaber sound effect.
+appropriately giggle-worthy Star Wars-like lightsaber sound effect.
 
 ## Howto
 
