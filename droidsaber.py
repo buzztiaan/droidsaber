@@ -149,7 +149,7 @@ def usage(showall = True):
          'Meaningful values are somewhere between 1.0 and 9.0',
          '')
 
-    print('Droidsaber version %s' % __version__)
+    print('Droidsaber version {}'.format( __version__))
     if showall:
         print(string.join(o, '\n'))
 
