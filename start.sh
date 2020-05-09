@@ -15,4 +15,4 @@ echo 100 | sudo tee /sys/bus/iio/devices/iio:device2/sampling_frequency >> /dev/
 # enable buffer
 echo 1 | sudo tee /sys/bus/iio/devices/iio:device2/buffer/enable >> /dev/null
 
-sudo python ./droidsaber.py
+sudo python3 ./droidsaber.py
