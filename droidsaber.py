@@ -51,8 +51,8 @@ class Droidsaber:
         try:
             pygame.init()
             pygame.mixer.init(FREQ, BITSIZE, CHANNELS, BUFFER)
-        except pygame.error, exc:
-            raise RuntimeError, "Could not initialize sound system: %s" % exc
+        except pygame.error as exc:
+            raise RuntimeError("Could not initialize sound system: {}".format(exc))
 
 
         def gs(m):
@@ -61,7 +61,7 @@ class Droidsaber:
                  for i in self.foundsound
                  if re.match(m + r'\d+\.\w{3}$', i)]
             if len(r) < 1:
-                raise RuntimeError, "Did not find files for %s sounds." % m
+                raise RuntimeError("Did not find files for {} sounds.".format(m))
             return r
 
         sounds = dict([(i, gs(i)) for i in
@@ -69,8 +69,8 @@ class Droidsaber:
                         'swing', 'strike', 'hit']])
 
         # get accel data (only x and y???)
-        queue = {'x': [0 for i in xrange(0, 8)],
-                 'y': [0 for i in xrange(0, 8)]}
+        queue = {'x': [0 for i in range(0, 8)],
+                 'y': [0 for i in range(0, 8)]}
 
         prev = 0
         up = True
@@ -107,7 +107,7 @@ class Droidsaber:
                     queue['x'].append(accelx * 0.048)
                     queue['y'].append(accely * 0.048)
                     val = max(stddev(queue['x']), stddev(queue['y']))
-#                    print val
+#                    print(val)
                     if (up):
                         if (val > prev):
                             prev = val
@@ -149,9 +149,9 @@ def usage(showall = True):
          'Meaningful values are somewhere between 1.0 and 9.0',
          '')
 
-    print 'Droidsaber version %s' % __version__
+    print('Droidsaber version {}'.format( __version__))
     if showall:
-        print string.join(o, '\n')
+        print(string.join(o, '\n'))
 
 
 if __name__ == '__main__':
@@ -161,7 +161,7 @@ if __name__ == '__main__':
     for o, a in opts:
         if o in ('-p', '--path'):
             if not os.path.isdir(a):
-                raise RuntimeError, '%s is not a directory' % a
+                raise RuntimeError('{} is not a directory'.format(a))
             tsopts['path'] = a
         if o in ('-s', '--swing', '-t', '--strike', '-h', '--hit'):
             tsopts[{'s': 'swing',
